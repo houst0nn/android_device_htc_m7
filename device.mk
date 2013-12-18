@@ -15,13 +15,14 @@
 #
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/htc/m7-gsm/m7-gsm-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/m7/m7-vendor.mk)
 
 # overlays
-DEVICE_PACKAGE_OVERLAYS += device/htc/m7ul/overlay
-
-# common overlays
-DEVICE_PACKAGE_OVERLAYS += device/htc/m7-common/overlay-gsm
+DEVICE_PACKAGE_OVERLAYS += device/htc/m7/overlay
 
 # Inherit from m7-common
 $(call inherit-product, device/htc/m7-common/m7-common.mk)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+        telephony.lteOnGsmDevice=1 \
+        ro.telephony.default_network=9
